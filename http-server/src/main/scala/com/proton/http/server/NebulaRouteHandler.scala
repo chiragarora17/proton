@@ -16,7 +16,13 @@ class NebulaRouteHandler(router: Router, json: Json)
       ctx.write(new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.CONTINUE))
     }
 
-    val request = Request(i)(json)
+    val value = ctx.channel().attr(Constants.PATH_ATTRIBUTE).get
+    var map :Map[String, String]= Map()
+    if (value != null) {
+      map = map + ("path" -> value)
+    }
+
+    val request = Request(i, Option.apply(map))(json)
     router.route(request).getOrElse(ResponseHandler.getNotFound).onComplete((r, t) => {
       if (r != null) {
         ctx.writeAndFlush((request, r))

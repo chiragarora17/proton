@@ -61,6 +61,7 @@ class NettyHttpServer(
           .addLast(new HttpObjectAggregator(config.maxPostSize))
           .addLast(new HttpResponseEncoder)
           .addLast(new HttpContentCompressor)
+          .addLast(new HttpUploadServerHandler)
           .addLast(new NebulaResponseEncoder(json, config))
           .addLast(new NebulaRouteHandler(router, json))
           .addLast(new NebulaExceptionHandler(json))

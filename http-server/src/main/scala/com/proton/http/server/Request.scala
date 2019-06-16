@@ -80,6 +80,9 @@ object Request {
   private val KEY = Key.get(classOf[Request])
   private val NULL = new Object()
   def apply(raw: FullHttpRequest)(implicit json: Json) = new Request(raw, None)(json)
+  def another(raw: FullHttpRequest, path: Option[Map[String, String]])(implicit json: Json) = {
+    new Request(raw,path)(json)
+  }
 
   def apply(): Request = new Request(new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, ""), None)(new JacksonJson)
 }
