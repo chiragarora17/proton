@@ -1,0 +1,49 @@
+# Eclipse artifacts
+.classpath
+.project
+.settings
+*.lock
+
+# scala builder in eclipse
+.tmpBin/
+# newer scala ide temp stuff
+.cache-*
+
+# Scala incremental compile cache (at least Eclipse generates this)
+.cache
+
+# IDEA artifacts
+*.iml
+.idea
+
+# Maven artifacts
+target
+*.versionsBackup
+
+# npm & grunt artifacts
+node_modules
+.grunt
+_SpecRunner.html
+npm-debug.log
+.transifexrc
+_credentialsLocal.js
+
+# Ignore [ce]tags files
+TAGS
+tags
+
+# Ignore mac resources
+.DS_Store
+
+# Misc
+*.swp
+atlassian-ide-plugin.xml
+*.lock.pid
+config.properties.lock
+*.out
+*.sublime-project
+*.sublime-workspace
+*.lock
+
+# Emacs backup files
+*~
