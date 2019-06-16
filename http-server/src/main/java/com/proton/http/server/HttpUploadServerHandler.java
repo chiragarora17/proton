@@ -126,7 +126,7 @@ public class HttpUploadServerHandler extends ChannelInboundHandlerAdapter {
           data.release();
         }
       }
-      if (visited || val) {
+      if (visited) {
         break;
       }
     }

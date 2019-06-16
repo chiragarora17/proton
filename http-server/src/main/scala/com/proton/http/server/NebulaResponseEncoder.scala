@@ -24,6 +24,7 @@ class NebulaResponseEncoder(json: Json, config: HttpServerConfig) extends Channe
 
           val keepAlive = HttpHeaders.isKeepAlive(request.rawRequest)
           HttpHeaders.setKeepAlive(httpResponse, keepAlive)
+          ctx.channel().attr(Constants.PATH_ATTRIBUTE).getAndSet(null)
 
           ctx.write(httpResponse)
           response.body match {

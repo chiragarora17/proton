@@ -163,13 +163,6 @@
                   <exclude>*.toml</exclude>
                 </excludes>
               </filter>
-              <filter>
-                <artifact>org.apache.hive:hive-exec</artifact>
-                <excludes>
-                  <exclude>org/json/*</exclude>
-                  <exclude>com/google/*</exclude>
-                </excludes>
-              </filter>
             </filters>
           </configuration>
         </execution>
