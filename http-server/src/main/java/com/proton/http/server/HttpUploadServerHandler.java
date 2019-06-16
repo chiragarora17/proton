@@ -97,6 +97,7 @@ public class HttpUploadServerHandler extends ChannelInboundHandlerAdapter {
     throws
     IOException {
     boolean val = false;
+    boolean visited = false;
     while (httpDecoder.hasNext()) {
       InterfaceHttpData data = httpDecoder.next();
       if (data != null) {
@@ -106,6 +107,7 @@ public class HttpUploadServerHandler extends ChannelInboundHandlerAdapter {
             val = true;
             break;
           case FileUpload:
+            visited = true;
             final FileUpload fileUpload = (FileUpload) data;
             final File file = new File(FILE_UPLOAD_LOCN + fileUpload.getFilename());
             if (!file.exists()) {
@@ -124,7 +126,7 @@ public class HttpUploadServerHandler extends ChannelInboundHandlerAdapter {
           data.release();
         }
       }
-      if (val) {
+      if (visited || val) {
         break;
       }
     }
